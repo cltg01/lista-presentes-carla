@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate icon" href="icone-coração.png" type="image/png">
+  <title>Lista de Casa Nova - Vitória & Cleito</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff6f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: #e63964;
+    }
+
+    h2 {
+      color: #e63964;
+      margin: 0;
+    }
+
+    .icone-vc {
+      font-family: 'Great Vibes', cursive;
+      /* ou outra fonte romântica */
+      font-size: 48px;
+      color: #d6336c;
+    }
+
+    .intro {
+      margin: 20px auto;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .presentes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .item {
+      background-color: #ffe4eb;
+      color: black;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .item h3 {
+      margin-bottom: 40px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .btn {
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn.finalizar {
+      position: sticky;
+      top: 0;
+      background: #e63964;
+      color: white;
+      padding: 25px 20px;
+      margin-bottom: 15px;
+      z-index: 10;
+      border: none;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #ff4f72;
+    }
+
+    .presenteado {
+      opacity: 0.6;
+    }
+
+    .presenteado::after {
+      content: "🎁 Já presenteado";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ccc;
+      color: #333;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .item {
+        width: 90%;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <h1>Lista de Casa Nova</h1>
+  <h2 class="icone-vc">V ❤️ C</h2>
+
+  <div class="intro">
+    <h3>Cor preferencial: Preto - Branco</h3>
+    <p>Estamos muito felizes em compartilhar este momento especial com vocês!<br>
+      Abaixo estão alguns itens que gostaríamos de ter em nosso novo lar.</p>
+  </div>
+
+  <div class="presentes" id="lista-presentes">
+    <!-- Os presentes serão carregados aqui -->
+  </div>
+
+    <script>
+      const presentesURL = 'presentes.txt';
+      const phoneNumber = '5585991900162';
+
+      async function carregarPresentes() {
+        const listaContainer = document.getElementById('lista-presentes');
+
+        try {
+          const resPresentes = await fetch(presentesURL);
+          const resEntregues = await fetch(
+            'https://script.google.com/macros/s/AKfycbxsHZXmmz6mvtQDs5f3pjRCYRO-vey5MHc2UzPvVuhPXZFABNR4x0vxWkO_S6Q3N9Nfzg/exec');
+
+          const todosPresentes = (await resPresentes.text())
+            .split('\n')
+            .map(l => l.trim())
+            .filter(l => l);
+
+          const presentesEntregues = (await resEntregues.text()).split('\n').map(l => l.trim());
+
+          todosPresentes.forEach((linha, i) => {
+            const [nomePresente, descricao] = linha.split('|').map(item => item.trim());
+            if (!nomePresente) return;
+
+            const jaEntregue = presentesEntregues.some(p => p.toLowerCase().trim() === nomePresente.toLowerCase()
+              .trim());
+
+            const div = document.createElement('div');
+            div.classList.add('item');
+            if (jaEntregue) div.classList.add('presenteado');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = nomePresente;
+            checkbox.id = 'presente_' + i;
+            checkbox.disabled = jaEntregue;
+
+            const label = document.createElement('label');
+            label.setAttribute('for', 'presente_' + i);
+            label.innerHTML = `<h3>${nomePresente}</h3><p>${descricao || ''}</p>`;
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            listaContainer.appendChild(div);
+          });
+
+          const finalizarBtn = document.createElement('button');
+          finalizarBtn.textContent = 'Finalizar Seleção';
+          finalizarBtn.className = 'btn finalizar';
+          finalizarBtn.onclick = enviarSelecionados;
+          listaContainer.prepend(finalizarBtn);
+
+        } catch (error) {
+          console.error('Erro ao carregar presentes:', error);
+          listaContainer.innerHTML = '<p>Erro ao carregar a lista de presentes.</p>';
+        }
+      }
+
+      function enviarSelecionados() {
+        const checkboxes = document.querySelectorAll('#lista-presentes input[type="checkbox"]:checked');
+        if (checkboxes.length === 0) {
+          alert('Selecione pelo menos um presente.');
+          return;
+        }
+
+        const presentes = Array.from(checkboxes).map(cb => cb.value);
+        const mensagem = `Olá Vitória e Cleito! Gostaria de presentear vocês com:\n\n🎁 ${presentes.join('\n🎁 ')}`;
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+
+        // Abre WhatsApp
+        window.open(url, '_blank');
+
+        // Envia para a planilha via Apps Script
+        const presentesParam = encodeURIComponent(presentes.join(','));
+        fetch(
+            `https://script.google.com/macros/s/AKfycbxsHZXmmz6mvtQDs5f3pjRCYRO-vey5MHc2UzPvVuhPXZFABNR4x0vxWkO_S6Q3N9Nfzg/exec?presentes=${presentesParam}`
+            )
+          .then(res => res.text())
+          .then(data => console.log('Resposta da planilha:', data))
+          .catch(err => console.error('Erro ao enviar para planilha:', err));
+
+      }
+
+      carregarPresentes();
+    </script>
+  </body>
+
+  </html>

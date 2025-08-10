@@ -1,0 +1,85 @@
+    Pix | Caso deseje contribuir com um valor na qual podemos usar para pagarmos algum item do evento
+    Outros | Caso deseje nos presentear com outro presente que não está na lista
+    TV Smart | Para entretenimento com acesso a apps de filmes, séries e vídeos.
+    Geladeira | Conserva alimentos e bebidas com eficiência e espaço.
+    Guarda-roupa  | Armazena roupas e acessórios com organização.
+    Fogão 4 bocas | Essencial para alimentação
+    Máquina de lavar roupas | Facilita o cuidado com as roupas do dia a dia.
+    Rack para TV | Suporte funcional e decorativo para a televisão e eletrônicos.
+    Cama de casal com colchão | Conforto essencial para o descanso do casal.
+    Rede de descanso | Ideal para relaxar em ambientes internos ou externos.
+    Sofá 3 lugares | Proporciona conforto e acolhimento para a sala de estar.
+    Cômoda Delta Quarto | Móvel funcional com gavetas, ideal para organizar roupas e objetos no quarto.
+    Cadeira de balanço | Ótimas para reeber visitas
+    Faqueiro 24 peças | Ideal para refeições do dia a dia com praticidade.
+    Jogo de Panela | Essencial para preparar diversas receitas.
+    Pratos de vidro | Servem bem refeições e trazem elegância à mesa.
+    Assadeira de vidro | Ideal para assar pratos doces e salgados.
+    Conjunto de talheres | Completa as refeições com praticidade.
+    Jogo de canecas | Perfeito para café, chá ou outras bebidas quentes.
+    Jogo de xícaras com pires|Elegância e praticidade para servir café.
+    Pegadores de massas e saladas | Facilitam servir massas e saladas.
+    Jogo de sobremesa | Serve sobremesas de forma organizada e bonita.
+    Conjunto de copos | Para servir água, sucos e outras bebidas.
+    Jarra de vidro com tampa | Armazena e serve bebidas com elegância.
+    Jogo americano | Protege a mesa e decora as refeições.
+    Jogo americano Preto e Branco | Versão colorida para decorar a mesa com charme.
+    Pote para frios | Armazena frios mantendo o frescor.
+    Potes de plástico | Organizam alimentos e sobras na geladeira.
+    Taças de sobremesa | Servem sobremesas com sofisticação.
+    Assadeira quadrada | Ideal para assar bolos e tortas.
+    Sanduicheira grill | Prepara lanches rápidos com praticidade.
+    Torradeira | Ideal para café da manhã com torradas crocantes.
+    Tábua de frios | Serve frios de forma prática e elegante.
+    Panos de pratos | Secam louças e auxiliam na limpeza.
+    Açucareiro | Armazena e serve açúcar com praticidade.
+    Escorredor de louça inox | Moderno e eficiente para secagem de louças.
+    Organizador de talheres | Mantém gavetas arrumadas e acessíveis.    
+    Chaleira inox | Prepara água para chá com elegância.
+    Jogo de bandejas | Ideal para servir café da manhã na cama ou visitas.
+    Aparelhos de Jantar | Conjunto completo para servir refeições.
+    Edredom dupla face | Garante conforto e versatilidade na cama.
+    Conjunto de travesseiros | Oferece apoio e conforto para o sono.
+    Jogo de lençol casal estampado | Veste a cama com beleza e conforto.
+    Toalha de banho algodão | Proporciona maciez e excelente absorção.
+    Toalhas de rosto | Complemento ideal para o conjunto de banho.
+    Jogo de tapete | Mantém o banheiro seco e decorado.
+    Cesto de lixo | Armazena resíduos do banheiro com discrição.
+    Banheiro | Itens diversos para organização e higiene do banheiro.
+    Tapete de Sala | Decora e aquece o ambiente da sala.
+    Cortina Blackout | Controla a luminosidade e garante privacidade.
+    Cafeteira | Prepara café de forma rápida e prática.
+    Garrafa de café | Armaezna e mantem o café quentinho
+    Cuscuzeira | Ideal para fazer cuscuz tradicional com facilidade.
+    Air fryer | Frita alimentos sem óleo de forma saudável.
+    Tábua de passar roupa | Apoia roupas para passar com segurança.
+    Armario de Banheiro com espelho | Auxilia na maquiagem e cuidados pessoais.
+    Espelho | Auxilia na maquiagem e cuidados pessoais.
+    Cesto de roupas flexível | Armazena roupas sujas ou limpas.
+    Ferro de passar roupa | Remove amassados com eficiência.
+    Rodo plástico | Remove água de pisos de forma rápida.
+    Baldes | Auxiliam na limpeza e transporte de água.
+    Kit pregador e Varal de chão | Fixam roupas no varal com firmeza.
+    Rodo de pia | Auxilia na limpeza da pia e bancadas.
+    Batedeira | Mistura massas leves com praticidade.
+    Liquidificador | Prepara sucos, vitaminas e massas leves.
+    Gelágua | Aparelho prático para armazenar e fornecer água natural e gelada, ideal para ambientes residenciais e comerciais.
+    Micro-ondas | Eletrodoméstico prático para aquecer e preparar alimentos de forma rápida.
+    Mixer 3 Em 1 | Aparelho versátil que funciona como mixer, processador e batedor, facilitando o preparo de alimentos.
+    Conjunto de Frigideiras | Utensílios essenciais para cozinhar, ideal para preparar diversos tipos de receitas.
+    Espremedor de laranja | Extrai suco de frutas com facilidade.
+    Panela pressão 4,5l | Cozinha alimentos rapidamente sob pressão.
+    Garrafa Térmica | Mantém líquidos quentes ou frios por mais tempo.
+    Escorredor de Macarrão | Drena a água de massas com facilidade.
+    Ralador em aço | Rala queijos, legumes e outros ingredientes.
+    Mini processador manual|Facilita o preparo de temperos e pequenos ingredientes.
+    Colheres de nylon | Utensílios resistentes para cozinhar sem riscar panelas.
+    Conchas de nylon | Servem sopas e caldos com praticidade.
+    Ventilador | Ventila e refresca o ambiente.
+    Cabides - 20 unidades | Organizadores resistentes para roupas.
+    Estojo de brocas e acessórios | Ferramentas para perfuração e reparos.
+    Jogo de chaves fenda e philips - 9 peças | Ideal para pequenos consertos.
+    Extensão com várias tomadas | Útil para organizar eletrônicos.
+    Aspirador de pó portátil|Praticidade na limpeza rápida.
+    Parafusadeira | Facilita a fixação e remoção de parafusos.
+    Conjunto de ferramentas | Kit versátil para manutenção doméstica.
