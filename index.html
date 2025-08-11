@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="alternate icon" href="icone-coração.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <title>Lista de Casa Nova - Carla & Jeremias</title>
   <style>
     body {
@@ -18,11 +20,11 @@
     h1 {
       margin-top: 20px;
       font-size: 2rem;
-      color: #e63964;
+      color: #f17d9a;
     }
 
     h2 {
-      color: #e63964;
+      color: #f17d9a;
       margin: 0;
     }
 
@@ -30,18 +32,46 @@
       font-family: 'Great Vibes', cursive;
       /* ou outra fonte romântica */
       font-size: 48px;
-      color: #d6336c;
+      color: #f17d9a;
     }
 
-    .intro {
-      margin: 20px auto;
-      padding: 10px;
-      background: white;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
+   .intro {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Sempre 3 colunas */
+    gap: 20px;
+}
+
+.item h4 {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.item p {
+    margin: 8px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.item i {
+    color: black;
+    margin-right: 6px;
+}
+
+
 
     .presentes {
       display: flex;
@@ -57,7 +87,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin: 10px;
       padding: 15px;
-      width: 250px;
+      width: 230px;
       text-align: center;
       position: relative;
       margin-bottom: 20px;
@@ -82,7 +112,7 @@
     .btn.finalizar {
       position: sticky;
       top: 0;
-      background: #e63964;
+      background: #f17d9a;
       color: white;
       padding: 25px 20px;
       margin-bottom: 15px;
@@ -128,17 +158,39 @@
   <h2 class="icone-vc">C ❤️ J</h2>
 
   <div class="intro">
-    <h3>Cor preferencial: Preto - Branco</h3>
     <p>Estamos muito felizes em compartilhar este momento especial com vocês!<br>
       Abaixo estão alguns itens que gostaríamos de ter em nosso novo lar.</p>
 
+       <div class="item-grid">
+        <div class="item">
+            <h4><i class="fas fa-utensils"></i> LOUÇAS</h4>
+            <p><i class="fas fa-check-circle"></i> Vidro</p>
+            <p><i class="fas fa-check-circle"></i> Cerâmica</p>
+            <p><i class="fas fa-check-circle"></i> Porcelana</p>
+        </div>
+
+        <div class="item">
+            <h4><i class="fas fa-pot-food"></i> PANELAS</h4>
+            <p><i class="fas fa-check-circle"></i> Alumínio</p>
+            <p><i class="fas fa-check-circle"></i> Cerâmica</p>
+            <p><i class="fas fa-check-circle"></i> Teflon</p>
+        </div>
+
+        <div class="item">
+            <h4><i class="fas fa-box"></i>MANTIMENTOS</h4>
+            <p><i class="fas fa-check-circle"></i> Bambu</p>
+            <p><i class="fas fa-check-circle"></i> Tupperware</p>
+            <p><i class="fas fa-check-circle"></i> Acrílico</p>
+        </div>
+    </div>
+
     <label>Seu Nome Completo:</label><br>
     <input type="text" id="nome" placeholder="Digite seu nome e sobrenome"
-      style="padding:5px; width:90%; max-width:300px;"><br><br>
+      style="padding:15px; width:90%; max-width:350px; border-radius: 10px;"><br><br>
 
     <label>Seu Contato (WhatsApp ou telefone):</label><br>
     <input type="text" id="contato" placeholder="(DDD) 90000-0000"
-      style="padding:5px; width:90%; max-width:300px;"><br><br>
+      style="padding:15px; width:90%; max-width:350px;"><br><br>
   </div>
 
   <div class="presentes" id="lista-presentes">
@@ -150,58 +202,75 @@
     const phoneNumber = '5585991900162';
 
     async function carregarPresentes() {
-      const listaContainer = document.getElementById('lista-presentes');
+  const listaContainer = document.getElementById('lista-presentes');
 
-      try {
-        const resPresentes = await fetch(presentesURL);
-        const resEntregues = await fetch(
-          'https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec'
-          );
+  // Lista de itens que nunca serão marcados como presenteados
+  const excecoes = [
+    "Assadeiras",
+    "Kit de bandejas",
+    "Kit de formas para bolo",
+    "Jarras para suco",
+    "Jogo de copos de vidro",
+    "Jogo de Panelas",
+    "Aparelho de jantar",
+    "Travessas",
+    "Jogo de cama Queen"
+  ].map(item => item.toLowerCase().trim());
 
-        const todosPresentes = (await resPresentes.text())
-          .split('\n')
-          .map(l => l.trim())
-          .filter(l => l);
+  try {
+    const resPresentes = await fetch(presentesURL);
+    const resEntregues = await fetch(
+      'https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec'
+    );
 
-        const presentesEntregues = (await resEntregues.text()).split('\n').map(l => l.trim());
+    const todosPresentes = (await resPresentes.text())
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l);
 
-        todosPresentes.forEach((linha, i) => {
-          const [nomePresente, descricao] = linha.split('|').map(item => item.trim());
-          if (!nomePresente) return;
+    const presentesEntregues = (await resEntregues.text()).split('\n').map(l => l.trim());
 
-          const jaEntregue = presentesEntregues.some(p => p.toLowerCase().trim() === nomePresente.toLowerCase()
-            .trim());
+    todosPresentes.forEach((linha, i) => {
+      const [nomePresente, descricao] = linha.split('|').map(item => item.trim());
+      if (!nomePresente) return;
 
-          const div = document.createElement('div');
-          div.classList.add('item');
-          if (jaEntregue) div.classList.add('presenteado');
+      const nomeLower = nomePresente.toLowerCase().trim();
 
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.value = nomePresente;
-          checkbox.id = 'presente_' + i;
-          checkbox.disabled = jaEntregue;
+      // Só marca como presenteado se NÃO estiver na lista de exceções
+      const jaEntregue = 
+        !excecoes.includes(nomeLower) &&
+        presentesEntregues.some(p => p.toLowerCase().trim() === nomeLower);
 
-          const label = document.createElement('label');
-          label.setAttribute('for', 'presente_' + i);
-          label.innerHTML = `<h3>${nomePresente}</h3><p>${descricao || ''}</p>`;
+      const div = document.createElement('div');
+      div.classList.add('item');
+      if (jaEntregue) div.classList.add('presenteado');
 
-          div.appendChild(checkbox);
-          div.appendChild(label);
-          listaContainer.appendChild(div);
-        });
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = nomePresente;
+      checkbox.id = 'presente_' + i;
+      checkbox.disabled = jaEntregue; // continua clicável se for exceção
 
-        const finalizarBtn = document.createElement('button');
-        finalizarBtn.textContent = 'Finalizar Seleção';
-        finalizarBtn.className = 'btn finalizar';
-        finalizarBtn.onclick = enviarSelecionados;
-        listaContainer.prepend(finalizarBtn);
+      const label = document.createElement('label');
+      label.setAttribute('for', 'presente_' + i);
+      label.innerHTML = `<h3>${nomePresente}</h3><p>${descricao || ''}</p>`;
 
-      } catch (error) {
-        console.error('Erro ao carregar presentes:', error);
-        listaContainer.innerHTML = '<p>Erro ao carregar a lista de presentes.</p>';
-      }
-    }
+      div.appendChild(checkbox);
+      div.appendChild(label);
+      listaContainer.appendChild(div);
+    });
+
+    const finalizarBtn = document.createElement('button');
+    finalizarBtn.textContent = 'Finalizar Seleção';
+    finalizarBtn.className = 'btn finalizar';
+    finalizarBtn.onclick = enviarSelecionados;
+    listaContainer.prepend(finalizarBtn);
+
+  } catch (error) {
+    console.error('Erro ao carregar presentes:', error);
+    listaContainer.innerHTML = '<p>Erro ao carregar a lista de presentes.</p>';
+  }
+}
 
     function enviarSelecionados() {
       const nome = document.getElementById('nome').value.trim();
