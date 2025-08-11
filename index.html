@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="alternate icon" href="icone-coração.png" type="image/png">
-  <title>Lista de Casa Nova - Vitória & Cleito</title>
+  <title>Lista de Casa Nova - Carla & Jeremias</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -125,103 +125,121 @@
 <body>
 
   <h1>Lista de Casa Nova</h1>
-  <h2 class="icone-vc">V ❤️ C</h2>
+  <h2 class="icone-vc">C ❤️ J</h2>
 
   <div class="intro">
     <h3>Cor preferencial: Preto - Branco</h3>
     <p>Estamos muito felizes em compartilhar este momento especial com vocês!<br>
       Abaixo estão alguns itens que gostaríamos de ter em nosso novo lar.</p>
+
+    <label>Seu Nome Completo:</label><br>
+    <input type="text" id="nome" placeholder="Digite seu nome e sobrenome"
+      style="padding:5px; width:90%; max-width:300px;"><br><br>
+
+    <label>Seu Contato (WhatsApp ou telefone):</label><br>
+    <input type="text" id="contato" placeholder="(DDD) 90000-0000"
+      style="padding:5px; width:90%; max-width:300px;"><br><br>
   </div>
 
   <div class="presentes" id="lista-presentes">
     <!-- Os presentes serão carregados aqui -->
   </div>
 
-    <script>
-      const presentesURL = 'presentes.txt';
-      const phoneNumber = '5585991900162';
+  <script>
+    const presentesURL = 'presentes.txt';
+    const phoneNumber = '5585991900162';
 
-      async function carregarPresentes() {
-        const listaContainer = document.getElementById('lista-presentes');
+    async function carregarPresentes() {
+      const listaContainer = document.getElementById('lista-presentes');
 
-        try {
-          const resPresentes = await fetch(presentesURL);
-          const resEntregues = await fetch(
-            'https://script.google.com/macros/s/AKfycbxsHZXmmz6mvtQDs5f3pjRCYRO-vey5MHc2UzPvVuhPXZFABNR4x0vxWkO_S6Q3N9Nfzg/exec');
+      try {
+        const resPresentes = await fetch(presentesURL);
+        const resEntregues = await fetch(
+          'https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec'
+          );
 
-          const todosPresentes = (await resPresentes.text())
-            .split('\n')
-            .map(l => l.trim())
-            .filter(l => l);
+        const todosPresentes = (await resPresentes.text())
+          .split('\n')
+          .map(l => l.trim())
+          .filter(l => l);
 
-          const presentesEntregues = (await resEntregues.text()).split('\n').map(l => l.trim());
+        const presentesEntregues = (await resEntregues.text()).split('\n').map(l => l.trim());
 
-          todosPresentes.forEach((linha, i) => {
-            const [nomePresente, descricao] = linha.split('|').map(item => item.trim());
-            if (!nomePresente) return;
+        todosPresentes.forEach((linha, i) => {
+          const [nomePresente, descricao] = linha.split('|').map(item => item.trim());
+          if (!nomePresente) return;
 
-            const jaEntregue = presentesEntregues.some(p => p.toLowerCase().trim() === nomePresente.toLowerCase()
-              .trim());
+          const jaEntregue = presentesEntregues.some(p => p.toLowerCase().trim() === nomePresente.toLowerCase()
+            .trim());
 
-            const div = document.createElement('div');
-            div.classList.add('item');
-            if (jaEntregue) div.classList.add('presenteado');
+          const div = document.createElement('div');
+          div.classList.add('item');
+          if (jaEntregue) div.classList.add('presenteado');
 
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.value = nomePresente;
-            checkbox.id = 'presente_' + i;
-            checkbox.disabled = jaEntregue;
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.value = nomePresente;
+          checkbox.id = 'presente_' + i;
+          checkbox.disabled = jaEntregue;
 
-            const label = document.createElement('label');
-            label.setAttribute('for', 'presente_' + i);
-            label.innerHTML = `<h3>${nomePresente}</h3><p>${descricao || ''}</p>`;
+          const label = document.createElement('label');
+          label.setAttribute('for', 'presente_' + i);
+          label.innerHTML = `<h3>${nomePresente}</h3><p>${descricao || ''}</p>`;
 
-            div.appendChild(checkbox);
-            div.appendChild(label);
-            listaContainer.appendChild(div);
-          });
+          div.appendChild(checkbox);
+          div.appendChild(label);
+          listaContainer.appendChild(div);
+        });
 
-          const finalizarBtn = document.createElement('button');
-          finalizarBtn.textContent = 'Finalizar Seleção';
-          finalizarBtn.className = 'btn finalizar';
-          finalizarBtn.onclick = enviarSelecionados;
-          listaContainer.prepend(finalizarBtn);
+        const finalizarBtn = document.createElement('button');
+        finalizarBtn.textContent = 'Finalizar Seleção';
+        finalizarBtn.className = 'btn finalizar';
+        finalizarBtn.onclick = enviarSelecionados;
+        listaContainer.prepend(finalizarBtn);
 
-        } catch (error) {
-          console.error('Erro ao carregar presentes:', error);
-          listaContainer.innerHTML = '<p>Erro ao carregar a lista de presentes.</p>';
-        }
+      } catch (error) {
+        console.error('Erro ao carregar presentes:', error);
+        listaContainer.innerHTML = '<p>Erro ao carregar a lista de presentes.</p>';
+      }
+    }
+
+    function enviarSelecionados() {
+      const nome = document.getElementById('nome').value.trim();
+      const contato = document.getElementById('contato').value.trim();
+      const checkboxes = document.querySelectorAll('#lista-presentes input[type="checkbox"]:checked');
+
+      if (!nome || !contato) {
+        alert('Informe seu nome e contato.');
+        return;
       }
 
-      function enviarSelecionados() {
-        const checkboxes = document.querySelectorAll('#lista-presentes input[type="checkbox"]:checked');
-        if (checkboxes.length === 0) {
-          alert('Selecione pelo menos um presente.');
-          return;
-        }
+      if (checkboxes.length === 0) {
+        alert('Selecione pelo menos um presente.');
+        return;
+      }
 
-        const presentes = Array.from(checkboxes).map(cb => cb.value);
-        const mensagem = `Olá Vitória e Cleito! Gostaria de presentear vocês com:\n\n🎁 ${presentes.join('\n🎁 ')}`;
-        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
+      const presentes = Array.from(checkboxes).map(cb => cb.value);
+      const mensagem =
+        `Olá Carla e Jeremias! Sou ${nome} (${contato}) e gostaria de presentear vocês com:\n\n🎁 ${presentes.join('\n🎁 ')}`;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mensagem)}`;
 
-        // Abre WhatsApp
-        window.open(url, '_blank');
+      // Abre WhatsApp
+      window.open(url, '_blank');
 
-        // Envia para a planilha via Apps Script
-        const presentesParam = encodeURIComponent(presentes.join(','));
+      // Envia para a planilha via Apps Script
+      presentes.forEach(presente => {
         fetch(
-            `https://script.google.com/macros/s/AKfycbxsHZXmmz6mvtQDs5f3pjRCYRO-vey5MHc2UzPvVuhPXZFABNR4x0vxWkO_S6Q3N9Nfzg/exec?presentes=${presentesParam}`
+            `https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec?nome=${encodeURIComponent(nome)}&presente=${encodeURIComponent(presente)}&contato=${encodeURIComponent(contato)}`
             )
           .then(res => res.text())
           .then(data => console.log('Resposta da planilha:', data))
           .catch(err => console.error('Erro ao enviar para planilha:', err));
+      });
+    }
 
-      }
 
-      carregarPresentes();
-    </script>
-  </body>
+    carregarPresentes();
+  </script>
+</body>
 
-  </html>
+</html>
