@@ -1,4 +1,4 @@
-Pix | Caso deseje contribuir com um valor na qual podemos usar para pagarmos algum item do evento
+Pix | Caso deseje contribuir com um valor. Chave pix: 85989290648
 Chaleira | Utensílio para ferver água rapidamente.
 Gelágua | Aparelho para resfriar e servir água gelada.
 Forno elétrico | Equipamento para assar, gratinar e aquecer alimentos.
@@ -70,3 +70,4 @@ Ferro de passar | Aparelho para passar roupas.
 Tabua de passar | Superfície para passar roupas.
 
 Máquina de lavar | Eletrodoméstico para lavar roupas.
+
