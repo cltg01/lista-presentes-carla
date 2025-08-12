@@ -1,3 +1,4 @@
+Pix | Caso deseje contribuir com um valor na qual podemos usar para pagarmos algum item do evento
 Chaleira | Utensílio para ferver água rapidamente.
 Gelágua | Aparelho para resfriar e servir água gelada.
 Forno elétrico | Equipamento para assar, gratinar e aquecer alimentos.
@@ -67,4 +68,5 @@ Bacias | Recipientes multiuso.
 Baldes | Recipientes para transporte de líquidos.
 Ferro de passar | Aparelho para passar roupas.
 Tabua de passar | Superfície para passar roupas.
+
 Máquina de lavar | Eletrodoméstico para lavar roupas.
