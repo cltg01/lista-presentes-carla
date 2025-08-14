@@ -227,7 +227,7 @@
   try {
     const resPresentes = await fetch(presentesURL);
     const resEntregues = await fetch(
-      'https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec'
+      'https://script.google.com/macros/s/AKfycbwSwRP37Ca6hBMoU-oowbsduGNIf4AseB_52wHoNsGUFHa5NVI_R97S-bRFWYF-SH1v/exec'
     );
 
     const todosPresentes = (await resPresentes.text())
@@ -305,7 +305,7 @@
       // Envia para a planilha via Apps Script
       presentes.forEach(presente => {
         fetch(
-            `https://script.google.com/macros/s/AKfycbxt7LF1RpuuznhDeMnBiEN-3fpP03_hjMjCzKNlY1miqTH-hzLASV3uFkwwxiIAdlmCMg/exec?nome=${encodeURIComponent(nome)}&presente=${encodeURIComponent(presente)}&contato=${encodeURIComponent(contato)}`
+            `https://script.google.com/macros/s/AKfycbwSwRP37Ca6hBMoU-oowbsduGNIf4AseB_52wHoNsGUFHa5NVI_R97S-bRFWYF-SH1v/exec?nome=${encodeURIComponent(nome)}&presente=${encodeURIComponent(presente)}&contato=${encodeURIComponent(contato)}`
             )
           .then(res => res.text())
           .then(data => console.log('Resposta da planilha:', data))
@@ -319,6 +319,7 @@
 </body>
 
 </html>
+
 
 
 
