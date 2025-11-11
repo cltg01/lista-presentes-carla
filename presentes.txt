@@ -20,6 +20,7 @@ Escorredor de louça | Peça para secar pratos, copos e talheres.
 Kit de formas para bolo | Conjunto de formas para assar bolos.
 Faqueiro | Conjunto de talheres para refeições.
 Garrafa para café | Recipiente térmico para armazenar café quente.
+Cafeteira | Usada para preparar café
 Jarras para suco | Recipientes para servir sucos e bebidas.
 Jogo de bowls | Conjunto de tigelas para servir ou preparar alimentos.
 Jogo de copos de vidro | Conjunto de copos para bebidas.
@@ -70,4 +71,5 @@ Ferro de passar | Aparelho para passar roupas.
 Tabua de passar | Superfície para passar roupas.
 
 Máquina de lavar | Eletrodoméstico para lavar roupas.
+
 
